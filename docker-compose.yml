@@ -2,9 +2,24 @@ services:
   web:
     image: nginx
     container_name: portfolio_web
-
     ports:
       - "8088:80"
-
     volumes:
       - .:/usr/share/nginx/html
+
+  mysql:
+    image: mysql:8
+    container_name: portfolio_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Duy@123456
+      MYSQL_DATABASE: portfolio
+    ports:
+      - "3307:3306"
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: portfolio_pma
+    environment:
+      PMA_HOST: mysql
+    ports:
+      - "8080:80"
