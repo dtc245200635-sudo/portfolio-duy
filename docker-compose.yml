@@ -23,3 +23,15 @@ services:
       PMA_HOST: mysql
     ports:
       - "8080:80"
+
+  grafana:
+    image: grafana/grafana
+    container_name: portfolio_grafana
+    ports:
+      - "3001:3000"
+
+  loki:
+    image: grafana/loki:latest
+    container_name: portfolio_loki
+    ports:
+      - "3100:3100"
